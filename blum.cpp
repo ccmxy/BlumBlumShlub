@@ -9,7 +9,7 @@ void Crypt(unsigned char *data, int dataLength, unsigned int initialValue){
     for(int i = 0;  i < dataLength; i++) {
       x = (x * x) % m;
       //XOR the current value with the ascii value of the (i + 1)th letter
-      int xoredValue = (x ^ 0x41);
+      int xoredValue = (x ^ data[i]);
       //Grab the lowest byte from the Xored value to serve as the byte key
       unsigned byteKey =(xoredValue) & 0xFF;
       std::cout << std::hex << byteKey << std::endl << std::endl;
@@ -21,7 +21,7 @@ void Crypt(unsigned char *data, int dataLength, unsigned int initialValue){
 
 int main() {
   unsigned char *data;
-  char const apple = 'a';
+  char const apple = 'A';
   data[0] = apple;
 
   int dataLength = 1;
